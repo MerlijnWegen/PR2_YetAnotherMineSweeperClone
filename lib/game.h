@@ -9,24 +9,36 @@
 typedef struct game_t game_t;
 
 typedef enum GameState{
-    PLAYING,
-    GAMEWON,
-    GAMELOST,
-    MENU,
-    RESTART_MENU
+    PLAYING,  //grid fill of tiles
+    GAMEWON,  //GAMEOVER screen, but player won
+    GAMELOST, //GameOVER Screen but player lost
+    MENU, //INSIDE of A menu before starting the game
+    RESTART_MENU //Inside of A menu, before
 } GameState;
 
+//Gets gameState of Game based off of the GameState Enum
 GameState GetGameState(game_t *game);
+
+//Sets gameState of Game based off of the GameState Enum
 void SetGameState(game_t *game, GameState state);
+
+// gets time in uint64_t since the "game started" (from the second the grid of tiles loads in.)
 uint64_t getTimeElapsed(game_t *game);
 
+// is the game currently running (can the player see the grid of tiles)
 bool isGameRunning(game_t *game);
+
+// has the player triggered a game condition WON/LOST?
 bool isGameOver(game_t *game);
 
+//load in the tiles empty until player clicks the first tile, then fill grid.
 void StartGame(game_t *game);
+
+//changes screen to a different menu
 void GameOver(game_t *game, bool hasWon);
 
 //memory
+
 game_t *CreateGame(settings_t *settings);
 void DestroyGame(game_t *game);
 #endif //GAME_H

@@ -6,9 +6,17 @@
 typedef struct grid_t grid_t;
 
 //prototypes
+
+//Creates a empty grid, All tiles hiddenm no mines yet.
 grid_t *Initgrid(grid_t *grid);
+
+//Fill the grid, with mines and value, force the tile the player clicked on and surrounding tiles based off of grace to be empty
 void fillgrid(grid_t *grid);
+
+// calculate the amount of nearby mines and fill it in for each tile.
 void CalculateAllTiles(grid_t *grid);
+
+//when player clicks a mine, reveal entire screen, highlight "exploded" mines (in red or something)
 void RevealAllTiles(grid_t *grid);
 
 //memory
