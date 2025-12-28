@@ -23,6 +23,7 @@ TileType GetTileType(tile_t *targetTile);
 // get tile state based off of enum
 TileState GetTileState(tile_t *targetTile);
 
+
 //get number of mines surrounding the tile
 int GetSurroundingMineCount(tile_t *targetTile);
 
@@ -31,6 +32,9 @@ bool IsTileMine(tile_t *targetTile);
 
 //sets the tile type based off of enum
 void SetTileType(tile_t *targetTile, TileType type);
+
+//sets the tile State Based off of enum
+void SetTileState(tile_t *targetTile, TileState state);
 
 //sets surroundingminecount based off of surrounding tiles
 void SetSurroundingMineCount(tile_t *targetTile, int value);
