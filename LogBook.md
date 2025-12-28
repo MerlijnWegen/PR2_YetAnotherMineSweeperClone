@@ -11,7 +11,6 @@
     - definieren van volgende functies in tile.c
         - TileType GetTileType(tile_t *targetTile)
         - TileState GetTileState(tile_t *targetTile)
-        - int GetSurroundingMineCount(tile_t *targetTile)
         - bool IsTileMine(tile_t *targetTile)
         - void SetTileType(tile_t *targetTile, TileType type)
         - void SetTileState(tile_t *targetTile, TileState state)
