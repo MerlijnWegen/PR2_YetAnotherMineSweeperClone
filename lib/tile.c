@@ -31,7 +31,9 @@ TileState GetTileState(tile_t *targetTile){
 }
 
 //get number of mines surrounding the tile
-int GetSurroundingMineCount(tile_t *targetTile);
+int GetSurroundingMineCount(tile_t *targetTile){
+    return targetTile->surroundingMines_Count;
+}
 
 // is the tile targeted a mine? (takes priority over count)
 bool IsTileMine(tile_t *targetTile){
