@@ -22,7 +22,7 @@ int GetGridWidth(settings_t *settings);
 int GetGridHeight(settings_t *settings);
 
 //get the total of amount of mines to generate.
-int GetMineCount(settings_t *settings);
+int GetMineTotal(settings_t *settings);
 
 
 // changes difficulty in settings
@@ -35,7 +35,7 @@ void SetGridWidth(settings_t *settings, int width);
 void SetGridHeight(settings_t *settings,int height);
 
 //sets the total amount of Mines to generate
-void SetMineCount(settings_t *settings, int minecount);
+void SetMineTotal(settings_t *settings, int minecount);
 
 //memory
 settings_t *CreateSettings(void);
