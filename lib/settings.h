@@ -1,7 +1,5 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
-#include "tile.h"
-#include "grid.h"
 
 typedef struct settings_t settings_t;
 
@@ -10,7 +8,7 @@ typedef enum{
     NORMAL,
     HARD,
     CUSTOM
-} GameMode;
+}GameMode;
 
 //Gets current gamemove, based off of the gamemode Enum
 GameMode GetGameMode(settings_t *settings);
@@ -37,7 +35,13 @@ void SetGridHeight(settings_t *settings,int height);
 //sets the total amount of Mines to generate
 void SetMineTotal(settings_t *settings, int minecount);
 
+int GetGridGrace(settings_t *settings);
+void SetGridGrace(settings_t *settings, int Grace);
+
+
+
+
 //memory
-settings_t *CreateSettings(void);
+settings_t *CreateSettings(GameMode difficulty);
 void DestroySettings(settings_t *settings);
 #endif //SETTINGS_H

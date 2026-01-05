@@ -18,7 +18,10 @@ void CalculateAllTiles(grid_t *grid);
 void RevealAllTiles(grid_t *grid);
 
 //helper to determine grid size.
-int getGridSize(grid_t *grid);
+int GetGridSize(grid_t *grid);
+
+//get Tile by xy
+tile_t *GetTile(grid_t *grid,int x, int y);
 
 //memory
 grid_t *CreateGrid(settings_t *settings);

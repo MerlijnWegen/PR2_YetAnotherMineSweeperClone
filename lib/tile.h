@@ -6,16 +6,16 @@
 typedef enum {
     EMPTY,
     MINE
-} TileType;
+}TileType;
 
 typedef enum {
     HIDDEN,
     FLAGGED,
     REVEALED
-} TileState;
+}TileState;
 
 //prototypes
-typedef struct tile tile_t;
+typedef struct tile_t tile_t;
 
 // get tile type based off of enum
 TileType GetTileType(tile_t *targetTile);

@@ -3,24 +3,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-
-typedef enum {
-    EMPTY,
-    MINE
-} TileType;
-
-typedef enum {
-    HIDDEN,
-    FLAGGED,
-    REVEALED
-} TileState;
-
 //prototypes
-typedef struct{
+typedef struct tile_t{
     TileType tileType;
     TileState tileState;
     int surroundingMines_Count;
-} tile_t;
+}tile_t;
 
 
 TileType GetTileType(tile_t *targetTile){
@@ -58,20 +46,16 @@ void SetTileState(tile_t *targetTile, TileState state){
         fprintf(stderr,"Fatal: Tilestate set to invalid state: \"%d\"", state);
         exit(EXIT_FAILURE);
     }else{
-        targetTile->tileType = state;
+        targetTile->tileState = state;
     }
 }
 
 void SetSurroundingMineCount(tile_t *targetTile, int value){
-    int surroundingMines = GetSurroundingMineCount(targetTile);
-    if(surroundingMines > 9){
-        fprintf(stderr,"Warning: Too many mines around tile \"%d\". This number shouldn't be higher then 9", surroundingMines);
-    }
-    targetTile->surroundingMines_Count = surroundingMines;
+    targetTile->surroundingMines_Count = value;
 }
 
 void FlagTile(tile_t *targetTile){
-    setTileState(targetTile,FLAGGED);
+    SetTileState(targetTile,FLAGGED);
 }
 
 void RemoveFlagTile(tile_t *targetTile){

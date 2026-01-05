@@ -1,6 +1,4 @@
 #include "settings.h"
-#include "tile.h"
-#include "grid.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -32,20 +30,15 @@
 #define cstm_def_startingGraceSize 3
 
 
+
+
 typedef struct settings_t{
     GameMode difficulty;
     int mineTotal;
     int gridWidth;
     int gridHeight;
     int startingGraceSize;
-} settings_t;
-
-typedef enum{
-    EASY,
-    NORMAL,
-    HARD,
-    CUSTOM
-} GameMode;
+}settings_t;
 
 
 GameMode GetGameMode(settings_t *settings){
@@ -113,13 +106,23 @@ void SetMineTotal(settings_t *settings, int minecount){
     settings->mineTotal = minecount;
 }
 
-settings_t *CreateSettings(void){
+int GetGridGrace(settings_t *settings){
+    return settings->startingGraceSize;
+}
+void SetGridGrace(settings_t *settings, int grace){
+    settings->startingGraceSize = grace;
+}
+
+
+
+settings_t *CreateSettings(GameMode difficulty){
     settings_t *settings = malloc(sizeof(settings_t));
     if(settings == NULL){
         fprintf(stderr,"Fatal: could not allocate memory for settings");
         exit(EXIT_FAILURE);
     }
     else{
+        SetGameMode(settings,difficulty);
         return settings;
     }
 }
