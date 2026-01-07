@@ -33,15 +33,16 @@ settings_t *GetGameSettings(game_t *game);
 // is the game currently running (can the player see the grid of tiles)
 bool IsGameRunning(game_t *game);
 
-// has the player triggered a game condition WON/LOST?
-bool IsGameOver(game_t *game);
+void GameLost(game_t *game);
+void CheckForGameWON(game_t *game);
 
 //load in the tiles empty until player clicks the first tile, then fill grid.
 void StartGame(game_t *game);
 
-//changes screen to a different menu
-void GameOver(game_t *game);
+void DebugCheats(game_t *game,int i);
 //memory
+
+
 
 game_t *CreateGame(settings_t *settings);
 void DestroyGame(game_t *game);

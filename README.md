@@ -10,21 +10,25 @@ Yet another:
 clone.
 ```
 TODO:
-- Gamelogic
-- Proper Screen for adjusting variables (adjustvariable)
-- Pre-game Difficuly select screen
-- layout for gameplay
+- cleaning up all files
+- adding proper comments to headers
+- playtesting & fixing bugs
 
 
 
 Out of scope changes: (won't be happing but future reference)
-- Improved implementation for grid_t.
-- 
-
-
-To Discuss:
-- SDL2 or Commandline?
-- TaakVerdeling
+- Clearer function names
+  - UI_, GAME_, TILE_ etc.
+- Complete overhaul of UI.c
+  - Repeated functionality, difficult to use, major personal annoyance
+- Seperate inputs into seperate .c
+- Improve Getters/Setters
+  - prevent cases where get(get(get())) is required.
+- Improve implementation for grid_t.
+- Improve implementation for game_t.
+- Seperate menu layouts in seperate file.
+- Improved mine generation
+  - Proper randomization, hackjob that it is currently
 
 ### limitatie Email:
 ---

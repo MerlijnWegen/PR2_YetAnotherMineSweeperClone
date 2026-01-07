@@ -15,7 +15,7 @@
 #define norm_def_mineTotal 40
 #define norm_def_gridWidth 16
 #define norm_def_gridHeight 16
-#define norm_def_startingGraceSize 3
+#define norm_def_startingGraceSize 2
 
 //hard
 #define hard_def_mineTotal 99
@@ -27,7 +27,7 @@
 #define cstm_def_mineTotal 40
 #define cstm_def_gridWidth 16
 #define cstm_def_gridHeight 16
-#define cstm_def_startingGraceSize 3
+#define cstm_def_startingGraceSize 2
 
 
 

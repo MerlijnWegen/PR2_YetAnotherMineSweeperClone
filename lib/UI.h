@@ -3,11 +3,13 @@
 #include "game.h"
 #include "settings.h"
 
-typedef enum{
+typedef enum MenuInput{
     S, //Start
     C, //Config Settings
     Q, //Quit
     B, //Back
+    M, //MENU (from Game)
+    R, //REstart (from Game)
 }MenuInput;
 
 typedef enum colors{
@@ -20,10 +22,13 @@ typedef enum colors{
     BROWN,
     CYAN,
     WHITE,
+    CURSOR,
 }Color;
 
+
 //user input
-GameMode ShowGameModeSelectionScreen(void);
+bool RestartMenu(MenuInput input,bool *HasGameStarted);
+void ShowGameModeSelectionScreen(settings_t *settings);
 MenuInput GetUserInput(void);
 
 //menu
@@ -41,11 +46,23 @@ void SetTextColor();
 
 //game
 void ShowGameScreen(game_t *game);
-void PrintGrid(game_t *game);
-void PrintTile(tile_t *tile);
-
+void PrintGrid(game_t *game,int cursor[2], bool *Debugflag);
+void PrintTile(tile_t *tile,bool cursor, GameState gamestate, bool *DebugFlag);
+void GameUIHandler(game_t *game,int cursor[2], bool *DebugFlag);
+void GameInputHandler(game_t *game,int cursor[2], bool *DebugFlag);
 
 //util
 void ClearScreen();
 void PrintTitle();
+
+/// @brief based on https://stackoverflow.com/questions/50394654/receive-the-keys-as-soon-as-they-are-pressed-on-unix-console
+void EnableRawInput();
+
+/// @brief based on https://stackoverflow.com/questions/50394654/receive-the-keys-as-soon-as-they-are-pressed-on-unix-console
+void DisableRawInput();
+void GameUIGameLOST(game_t *game,int cursor[2]);
+void GameUIGameWON(game_t *game);
+
+
 #endif //UI_H
+

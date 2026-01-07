@@ -96,6 +96,53 @@
 ### ANDERS
 - refactoren van functies naar PascalCase
 
+## 07-01-2025
+### Merlijn
+*notitie, dit is deze logbook update is geschreven op 02:30 , dus verwacht (zeer) lichte onzin.
+#### Veranderingen
+- game.c
+  - nieuwe implemenatie voor isgamerunning getgamestate > game->gamestate
+  - Startgame implementatie veranderd, zet nu aleen maar een nieuwe grid klaar voor fillgrid en calculatealltiles
+  - destroygame verwijderd nu ook grid.
+- grid.c
+  - betere implementatie voor fillgrid, houdt nu rekening mee met grace,, veilge zone rond de cursor.
+- settings.c
+  - waardes van startingGrace aangepast, uit testen bleek deze te hoog.
+- ui.c
+  - implementeren van ShoWGameModeSelectionScreen... maar is niet gebruikt.
+  - toevoegen van waardes aan getUserinput, slechte functie, maar het werkt (amper)
+  - printgrid implementeren voor functionaliteit van cursor
+  - printgTile, correcte implementatie van testing naar mines en hidden correct uit te printen
+  - SetTextColor toevoegen van cursor
+#### Toevoegingen
+- main.c
+  - Gamewin / gamelose logica
+  - debugflag voor... testing
+- game.c
+  - void GameLost, returned Gamelost, triggered waneer MINE wordt gerevealed in gameinput.
+  - void CheckForGameWon, simpele functie die kijkt als er evenveel mines als hidden tiles zijn, zet gamesate naar GAMEWON
+  - debugcheats, buggy broken en amper functionele functie voor het testen van de game.
+- grid.c
+  - void AddFlagged, telt hoeveelheid flagged tiles op, was functionaliteit vergeten in design
+  - int GetFlagged count, returned hoeveelheid flagged tiles, was functionaliteit vergeten in design
+  - int getrevealedcount, returned hoeveelheid revealed tiles, was functionaliteit vergeten in design
+  - void addRevealed, telt hoeveelheid revealed tiles op, was functionaleit vergeten in design
+  - void subrtractflagged, telt af hoeveelheid flagged tiles,     ^
+  - void FloodReveal, waneer een lege tile zonder waarde is gerevealed zal het alle lege tiles erond heen ook revealen, gebruitk een array om dit te herhalen met elk verbonden tile
+- UI.c
+  - bool RestartMenu, functie voor na GAMEOVER, dat user limieteert om te restarten of terug naar menu, returned bool voor logica in while loop
+  - void GameUiHandler functie voor de UI te printen tijdens het spelen van de game.
+  - void GameInputHandler, functie voor de logica van controls voor het spel te handelen,
+  - void EnableRawInput, functie voor het enablen van directie invoer, door ECHO en CANON te disabelen
+    - Gebaseerd op https://stackoverflow.com/questions/50394654/receive-the-keys-as-soon-as-they-are-pressed-on-unix-console
+  - void DisableRawInput, functie voor het enablen van directie invoer, door ECHO en CANON te enablen
+    - Gebaseerd op https://stackoverflow.com/questions/50394654/receive-the-keys-as-soon-as-they-are-pressed-on-unix-console
+  - void GameUiGameLOSt, functie voor het uitprinten van een premade layout voor als player verlies, zonder functionaliteit om te spelen
+  - void GameUIGameWON, functie voor het uitprintend van een premade layout voor als de player wint, laat zien hoelang player heefd geduurt in minuten en seconden.
+
+
+
+
 
 ## 02-01-2025
 ### Merlijn

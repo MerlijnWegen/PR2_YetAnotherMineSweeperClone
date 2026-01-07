@@ -33,21 +33,33 @@ settings_t *GetGameSettings(game_t *game){
 }
 
 bool IsGameRunning(game_t *game){
-    return GetGameState(game) == PLAYING;
+    return game->gameState == PLAYING;
 }
 
-bool IsGameOver(game_t *game);
+void GameLost(game_t *game){
+    game->gameState = GAMELOST;
+}
+
+void CheckForGameWON(game_t *game){
+    if(GetGridSize(game->grid) - GetRevealedCount(game->grid) == GetMineTotal(game->settings)){
+        game->gameState = GAMEWON;
+    }
+}
 
 void StartGame(game_t *game){
     game->grid = CreateGrid(game->settings);
     Initgrid(game->grid);
-    fillgrid(game->grid);
-    CalculateAllTiles(game->grid);
 }
 
-void GameOver(game_t *game);
-
-
+//broken cheats, you can use them but the game WILL break, debug only
+void DebugCheats(game_t *game,int i){
+    switch (i)
+    {
+    case 1: game->gameState = GAMELOST; break;
+    case 2: game->gameState = GAMEWON; break;
+    case 3: RevealAllTiles(game->grid); break;
+    }
+}
 //memory
 
 game_t *CreateGame(settings_t *settings){
@@ -64,5 +76,6 @@ game_t *CreateGame(settings_t *settings){
     return game;
 }
 void DestroyGame(game_t *game){
+    DestroyGrid(game->grid);
     free(game);
 }

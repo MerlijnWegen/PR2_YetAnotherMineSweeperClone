@@ -15,6 +15,31 @@ typedef struct grid_t{
 }grid_t;
 
 
+void AddFlagged(grid_t *grid){
+    grid->tilesFlagged_Total++;
+}
+
+int GetFlaggedCount(grid_t *grid){
+    return grid->tilesFlagged_Total;
+}
+
+int GetRevealedCount(grid_t *grid){
+    return grid->tilesRevealed_Total;
+}
+
+
+void AddRevealed(grid_t *grid){
+    grid->tilesRevealed_Total++;
+}
+
+void SubtractFlagged(grid_t *grid){
+    if(grid->tilesContainingMines_Total > 0){
+        grid->tilesFlagged_Total--;
+    }
+}
+
+
+
 grid_t *Initgrid(grid_t *grid){
     tile_t **tiles = (tile_t **)grid->tiles; //hubris
     int gridsize = GetGridSize(grid);
@@ -25,17 +50,30 @@ grid_t *Initgrid(grid_t *grid){
 }
     
 
-void fillgrid(grid_t *grid){
+void fillgrid(grid_t *grid,int cursor[2],int *grace){
     tile_t **tiles = (tile_t **)grid->tiles; //hubris
     int mineTotal = grid->tilesContainingMines_Total;
     int mineCount = 0;
-    
+    int graceRange = *grace;
+
+    int width = grid->gridHeight;
+
+
     while(mineCount < mineTotal){
         int random = rand() % GetGridSize(grid);
-        if(GetTileType(tiles[random]) != MINE){
-            SetTileType(tiles[random],MINE);
-            mineCount++;
+        int randomX = random % width;
+        int randomY = random / width;
+
+        if(GetTileType(tiles[random]) == MINE){
+            continue;
         }
+
+        if(randomX <= cursor[0] + graceRange && randomX >= cursor[0] - graceRange && randomY <= cursor[1] + graceRange && randomY >= cursor[1] - graceRange){
+            continue;
+        }
+
+        SetTileType(tiles[random],MINE);
+        mineCount++;
     }
 }
     
@@ -77,8 +115,67 @@ void RevealAllTiles(grid_t *grid){
     int gridsize = GetGridSize(grid);
 
     for(int i = 0; i < gridsize; i++){
-        
         SetTileState(tiles[i], REVEALED);
+    }
+}
+
+void FloodReveal(grid_t *grid, int StartX, int StartY){
+    tile_t **tiles = (tile_t **)grid->tiles; //hubris
+    int gridSize = grid->gridWidth * grid->gridHeight;
+
+    int RevealList[gridSize][2];
+    int head = 0;
+    int tail = 0;
+
+    RevealList[tail][0] = StartX;
+    RevealList[tail][1] = StartY;
+    tail++;
+
+    while(head < tail){
+        int x = RevealList[head][0];
+        int y = RevealList[head][1];
+        head++;
+
+        if(x < 0 || x >= grid->gridWidth || y < 0 || y >= grid->gridHeight){
+            continue;
+        }
+        tile_t *tile = tiles[(y * grid->gridWidth) + x];
+        if(GetTileState(tile) == REVEALED || GetTileState(tile) == FLAGGED){
+            continue;
+        }
+        AddRevealed(grid);
+        RevealTile(tile);
+        if(GetSurroundingMineCount(tile) > 0){
+            continue;
+        }
+
+        for(int neighborY = -1; neighborY  <= 1; neighborY ++){
+            for(int neighborX = -1; neighborX <= 1;neighborX++){
+                if(neighborX == 0 && neighborY == 0){
+                    continue;
+                }
+
+                int targetX = neighborX + x;
+                int targetY = neighborY + y;
+
+
+                if(targetX  < 0 || targetX  >= grid->gridWidth || targetY < 0 || targetY >= grid->gridHeight){
+                    continue;
+                }
+                tile_t *target = tiles[(targetY * grid->gridWidth) + targetX ];
+                if(GetTileState(target) == HIDDEN){
+                    if(GetSurroundingMineCount(target) == 0){
+                        RevealList[tail][0] = targetX;
+                        RevealList[tail][1] = targetY;
+                        tail++;
+                    }   
+                    else{
+                        RevealTile(target);
+                        AddRevealed(grid);
+                    }
+                }
+            }
+        }
     }
 }
 
