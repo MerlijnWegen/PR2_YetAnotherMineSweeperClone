@@ -141,7 +141,13 @@
   - void GameUIGameWON, functie voor het uitprintend van een premade layout voor als de player wint, laat zien hoelang player heefd geduurt in minuten en seconden.
 
 
-
+## 07-01-2025 / Deel 2
+### Merlijn
+#### Veranderingen
+- grid
+  - Initgrid naar void overgezet, onnodig om grid adress terug te geven als je grid adress geeft
+#### Toevoegingen
+- Comments bij elke functie.
 
 
 ## 02-01-2025

@@ -40,13 +40,12 @@ void SubtractFlagged(grid_t *grid){
 
 
 
-grid_t *Initgrid(grid_t *grid){
+void Initgrid(grid_t *grid){
     tile_t **tiles = (tile_t **)grid->tiles; //hubris
     int gridsize = GetGridSize(grid);
     for(int i = 0; i < gridsize; i++){
         tiles[i] = CreateTile(); 
     }
-    return grid;
 }
     
 
