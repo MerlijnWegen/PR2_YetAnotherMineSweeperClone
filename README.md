@@ -8,12 +8,6 @@ Yet another:
 |_|  |_|_____|_| \_|______|_____/    \/  \/   |______|______|_|    |______|_|  \_\     
 clone.
 ```
-TODO:
-- cleaning up all files
-- adding proper comments to headers
-- playtesting & fixing bugs
-
-
 
 Out of scope changes: (won't be happing but future reference)
 - Clearer function names
