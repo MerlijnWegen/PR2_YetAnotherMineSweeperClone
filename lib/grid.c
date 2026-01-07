@@ -164,7 +164,7 @@ void FloodReveal(grid_t *grid, int StartX, int StartY){
                 }
                 tile_t *target = tiles[(targetY * grid->gridWidth) + targetX ];
                 if(GetTileState(target) == HIDDEN){
-                    if(GetSurroundingMineCount(target) == 0){
+                    if(GetSurroundingMineCount(target) == 0 && tail < gridSize){
                         RevealList[tail][0] = targetX;
                         RevealList[tail][1] = targetY;
                         tail++;
