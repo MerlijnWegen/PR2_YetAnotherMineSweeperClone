@@ -1,3 +1,8 @@
+
+## Logboek Programming 2:
+- Groep: 13
+- Members: Merlijn Wegen.
+
 ## 19-12-2025
 ### Merlijn
 - KlaarZetten van workspace, Github en folder scructuur.
@@ -146,11 +151,10 @@
 #### Veranderingen
 - grid
   - Initgrid naar void overgezet, onnodig om grid adress terug te geven als je grid adress geeft
+- Files reorganizeerd.
+  
 #### Toevoegingen
 - Comments bij elke functie.
-
-
-## 02-01-2025
-### Merlijn
-#### Veranderingen
-#### Toevoegingen
+- MineSweeper.bat, om makkelijk te game te starten via windows explorer
+- Manual, handleiding voor minesweeper
+- YetAnotherMineSweeperClone.zip, precompiled game & manual
