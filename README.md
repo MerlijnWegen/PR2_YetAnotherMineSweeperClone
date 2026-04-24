@@ -23,6 +23,21 @@ Out of scope changes: (won't be happing but future reference)
 - Improved mine generation
   - Proper randomization, hackjob that it is currently
 
+### Limitations:
+Originally this project was made for a course assignment, to create your own version of Minesweeper, though i was severely limited by the original design document, which was rushed. but i'm happy that i managed to get it to work even with the flawed design.
+No alteratiosn were made to the design, and i did my best to follow it.
+
+The end result is Deeply flawed, i didn't add any structs and had to use the stack, 
+
+### Known issues
+- (code) Code is a mess, ownership is unclear or poorly implemented.
+- (Bug) Stack overflow when clearing many tiles at once (technical limitation, due to not having been able to use a linked list)
+- (Bug) terminal not clearing correctly, the screen gets reprintend every input, but previous output is not changed, but is moved up
+
+
+
+
+
 ### limitatie Email:
 ---
 Je ontwerp is goedgekeurd en je kunt nu beginnen met de implementatie, geweldig! Houd rekening met de volgende belangrijke informatie voordat je begint met coderen:
