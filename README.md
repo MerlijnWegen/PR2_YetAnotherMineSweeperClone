@@ -59,3 +59,4 @@ Gebruik ditzelfde document ook om bij te houden wie aan welk deel van de code he
 
 Aan het einde van het project moet je dit changelog samen met je code indienen.
 
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/0f652ece-97d1-4ce6-aee1-addb89cba4ea" />
