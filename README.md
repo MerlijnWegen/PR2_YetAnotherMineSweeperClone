@@ -6,7 +6,7 @@ Yet another:
 | |\/| | | | | . ` |  __|  \___ \  \ \/  \/ / |  __| |  __| |  ___/|  __| |  _  /   
 | |  | |_| |_| |\  | |____ ____) |  \  /\  /  | |____| |____| |    | |____| | \ \    
 |_|  |_|_____|_| \_|______|_____/    \/  \/   |______|______|_|    |______|_|  \_\     
-clone.
+clone. (terminal edition)
 ```
 
 Out of scope changes: (won't be happing but future reference)
